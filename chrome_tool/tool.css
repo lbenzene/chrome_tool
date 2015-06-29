@@ -1,0 +1,102 @@
+/**
+ *  ___ _ _ ___ ___ ___ ___ 
+ * | .'| `_| __| .'| . | -_|
+ * |__,|_| |___|__,|_|_|___|
+ *
+ */
+
+body {
+  background-color: #FFFFFF;
+  color: #141414;
+  width: 360px;
+  height: auto;
+  margin: 20px;
+  padding: 0;
+  overflow: hidden;
+  font-family: segoe UI, "microsoft yahei";
+}
+
+div.container {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+}
+
+div.colour-transform > div.row {
+  display: block;
+  position: relative;
+}
+
+div.colour-transform > div.row + div.row {
+  margin-top: 10px;
+}
+
+div.colour-transform > div.row > h1 {
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+div.colour-transform > div.row > input {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+
+  height: 30px;
+  width: 100%;
+  padding: 5px 10px;
+  line-height: 20px;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: consolas;
+  outline: none;
+  border: 2px solid #CCDDCC;
+
+}
+
+div.colour-transform > div.row > input:focus {
+  border-color: #AACCAA;
+}
+
+div.colour-transform > div.row > div.output {
+  display: block;
+  position: relative;
+  width: 200px;
+  float: left;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  background-color: #123456;
+}
+
+div.colour-transform > div.row > div.output > a {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  height: 20px;
+  outline: none;
+  border: 1px solid transparent;
+  width: 100%;
+  font-size: 14px;
+  font-family: consolas;
+  text-align: center;
+  background-color: transparent;
+}
+
+div.colour-transform > div.row > div.control {
+  display: block;
+  position: relative;
+  width: 140px;
+  margin-left: 20px;
+  float: left;
+}
+
+div.colour-transform::after {
+  display: table;
+  content: "";
+  clear: both;
+}

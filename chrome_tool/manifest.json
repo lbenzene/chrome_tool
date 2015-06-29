@@ -1,0 +1,20 @@
+{
+  "name": "Tools",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "My description",
+  
+  "permissions": [
+    // "tabs", "cookies", "http://*/*", "https://*/*", "background"
+  ],
+  "icons": 
+  { 
+    "48": "pik.png",
+    "128": "pik.png"
+  },
+  "browser_action": {
+    "default_icon" : "pik.png",
+    "default_title": "Chrome Tool",
+    "default_popup": "main.html"
+  }
+}
