@@ -140,7 +140,7 @@ div.colour-transform > div.row > div.output {
   box-sizing: border-box;
   padding: 20px;
   text-align: center;
-  background-color: #123456;
+  background-color: rgb(163, 202, 146);
 }
 
 div.colour-transform > div.row > div.output > a {
