@@ -68,22 +68,43 @@ String.prototype.ltrim = function() {
 String.prototype.rtrim = function() {
    return this.replace(/(\s*$)/g, "");
 }
+String.prototype.TRIM = function() {
+   return this.replace(/(\s*)/g, "");
+}
+
+Number.prototype.toHex = function(num) {
+    return this < num ? "0" + this.toString(num).toUpperCase() 
+                      : this.toString(num).toUpperCase();
+}
 
 function switch_color(cstr) {
     cstr = cstr.trim();
     var R, G, B;
     var match;
-    if (match = cstr.match(new RegExp('^#([0-9a-fA-F]{2}){3}'))) {
+    if (match = cstr.match(new RegExp('^#([0-9a-fA-F]{2}){3}.*$'))) {
         R = parseInt(match[0].substr(1, 2), 16);
         G = parseInt(match[0].substr(3, 2), 16);
         B = parseInt(match[0].substr(5, 2), 16);
         // console.log(R);
         // console.log(G);
         // console.log(B);
-    } else if (true) {
-
+    } else if (match = cstr.match(new RegExp(/\d{1,3},\s?\d{1,3},\s?\d{1,3}/g))) {
+        console.log(match);
+        [R, G, B] = match[0].TRIM().split(',', 3);
+        R = parseInt(R);
+        G = parseInt(G);
+        B = parseInt(B);
+    } else {
+        alert("error input");
+        return;
     };
-    if (R + B + G < 127 * 3 ) {
+
+    if ( R > 255 || G > 255 || B > 255) {
+        alert("error input");
+        return;
+    };
+
+    if ( R + B + G < 127 * 3 ) {
         $('#colour-transform-output').style.color = "#EBEBEB";
     } else {
         $('#colour-transform-output').style.color = "#141414";
@@ -91,9 +112,15 @@ function switch_color(cstr) {
     $('#colour-transform-output').style.backgroundColor = "rgb(" + R + "," + G + "," + B + ")";
     // $('#colour-transform-output').css('backgroundColor', "rgb(" + R + "," + G + "," + B + ")");
     var HTML = '';
-    HTML += '<a tabindex="0">#' + R.toString(16) + G.toString(16) + B.toString(16) + '</a>';
+    HTML += '<a tabindex="0">#' + R.toHex(16) + G.toHex(16) + B.toHex(16) + '</a>';
     HTML += '<a tabindex="1">rgb(' + R + ', ' + G + ', ' + B + ')</a>'
     $('#colour-transform-output').innerHTML = HTML;
+}
+
+function enterPress(event) {
+    if (event.keyCode == 13) {
+        switch_color($('#colour-transform-input').value);
+    }
 }
 
 function init() {
@@ -104,6 +131,8 @@ function init() {
     $('#colour-transform-start').addEventListener('click', function() {
         switch_color($('#colour-transform-input').value);
     })
+
+    document.addEventListener('keyup', enterPress);
 }
 
 
